@@ -3,24 +3,36 @@ const today = new Date();
 ---
 
 <footer class="copyright">
-  &copy; {today.getFullYear()} Your name here. All rights reserved.
+  <p>&copy; {today.getFullYear()} Your name here. All rights reserved.</p>
+  <p>
+    Built with <a href="https://github.com/mitian233/astro-theme-lotus">Lotus</a
+    >
+  </p>
+  <style>
+    footer {
+      padding: 2em 1em 2em 1em;
+      text-align: center;
+      a {
+        color: #f27d96;
+      }
+      a:hover,
+      a:active {
+        color: #f27d96;
+        text-decoration: none;
+      }
+    }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1em;
+      margin-top: 1em;
+    }
+    .social-links a {
+      text-decoration: none;
+      color: rgb(var(--gray));
+    }
+    .social-links a:hover {
+      color: rgb(var(--gray-dark));
+    }
+  </style>
 </footer>
-<style>
-  footer {
-    padding: 2em 1em 2em 1em;
-    text-align: center;
-  }
-  .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 1em;
-    margin-top: 1em;
-  }
-  .social-links a {
-    text-decoration: none;
-    color: rgb(var(--gray));
-  }
-  .social-links a:hover {
-    color: rgb(var(--gray-dark));
-  }
-</style>
