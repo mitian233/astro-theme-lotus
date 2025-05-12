@@ -1,0 +1,146 @@
+---
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+
+const menuLinks = [
+  { name: "FEATURED", nameJa: "特集", path: "/featured" },
+  { name: "BLOG", nameJa: "ブログ", path: "/blog" },
+  { name: "ABOUT", nameJa: "について", path: "/about" },
+];
+
+interface Props {
+  shareTitle?: string;
+}
+const { shareTitle } = Astro.props;
+---
+
+<div id="pagetop"></div>
+<div class="contentWrapper">
+  <div class="container grow">
+    <header class="header">
+      <div class="header__inner">
+        <h1 class="">
+          <a href="../" class="insite">
+            <p>{SITE_TITLE}</p>
+            <p>{SITE_DESCRIPTION}</p>
+          </a>
+        </h1>
+        <p class="header__date"></p>
+        <p class="header__ham">
+          <a href="#"><span></span><span></span><span></span></a>
+        </p>
+      </div>
+    </header>
+    <slot />
+    <footer class="footer">
+      <div class="footer__inner">
+        <div class="footer__block">
+          <div class="footer__sns">
+            <ul>
+              <li>
+                <a href="#" target="_blank"><span>MASTODON</span></a>
+              </li>
+              <li>
+                <a href="#" target="_blank"><span>TWITTER</span></a>
+              </li>
+              <li>
+                <a href="#" target="_blank"><span>GITHUB</span></a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer__share">
+            <p class="share--head">SHARE</p>
+            <div class="share--list">
+              <ul>
+                <li>
+                  <a
+                    href={`https://twitter.com/intent/tweet?url=${Astro.request.url}&text=${shareTitle || SITE_TITLE}`}
+                    onclick="window.open(this.href,'tw_window', 'screenX='+(screen.width - 600) / 2+',screenY='+(screen.height - 500) / 2+',width=600, height=300, menubar=no, toolbar=no, scrollbars=yes');return false;"
+                    ><img
+                      src="/shared/img/common/share_x.png"
+                      width="60"
+                      height="60"
+                      alt=""
+                    /></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href={`https://www.facebook.com/share.php?u=${Astro.request.url}`}
+                    onclick="window.open(this.href,'tw_window', 'screenX='+(screen.width - 800) / 2+',screenY='+(screen.height - 400) / 2+',width=800, height=400, menubar=no, toolbar=no, scrollbars=yes');return false;"
+                    ><img
+                      src="/shared/img/common/share_facebook.svg"
+                      width="60"
+                      height="60"
+                      alt=""
+                    /></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href={`https://line.me/R/msg/text/?${shareTitle || SITE_TITLE}%20${Astro.request.url}`}
+                    onclick="window.open(this.href,'tw_window', 'screenX='+(screen.width - 800) / 2+',screenY='+(screen.height - 600) / 2+',width=800, height=600, menubar=no, toolbar=no, scrollbars=yes');return false;"
+                    ><img
+                      src="/shared/img/common/share_line.svg"
+                      width="60"
+                      height="60"
+                      alt=""
+                    /></a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div id="pageup">
+      <a href="#pagetop"><span><strong>▲</strong><br />TOP</span></a>
+    </div>
+  </div>
+  <aside id="side" class="side size--vh grow">
+    <div class="side__inner">
+      <nav class="side__nav">
+        <ul>
+          {
+            menuLinks.map((link) => (
+              <li
+                class={`${Astro.url.pathname.startsWith(link.path) ? "is--current" : ""}`}
+              >
+                <a href={link.path} class="insite">
+                  <span class="nav--en">{link.name}</span>
+                  <span class="nav--ja">{link.nameJa}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+      <div class="side__desc"></div>
+    </div>
+  </aside>
+</div>
+
+<script>
+  import gsap from "gsap";
+  let showMenu = false;
+  const ham = document.querySelector(".header__ham");
+  const side = document.querySelector("#side");
+  ham?.querySelector("a")?.addEventListener("click", () => {
+    showMenu = !showMenu;
+    if (showMenu) {
+      gsap.to(side, {
+        duration: 0.2,
+        opacity: 1,
+        display: "block",
+        onStart: () => ham?.classList.add("is--open"),
+      });
+    } else {
+      gsap.to(side, {
+        duration: 0.2,
+        opacity: 0,
+        display: "none",
+        onStart: () => ham?.classList.remove("is--open"),
+      });
+    }
+  });
+</script>

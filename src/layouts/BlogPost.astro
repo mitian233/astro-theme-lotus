@@ -1,85 +1,132 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+import ContainerLayouts from "./ContainerLayouts.astro";
 
-type Props = CollectionEntry<'blog'>['data'];
+import "../styles/news.css";
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+type PostProps = CollectionEntry<"blog">["data"];
+interface Props extends PostProps {
+  pageTitle?: string;
+  pageTitleJa?: string;
+}
+
+const {
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  heroImage,
+  category,
+  pageTitle,
+  pageTitleJa,
+} = Astro.props;
 ---
 
-<html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-		<style>
-			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
-			}
-			.hero-image {
-				width: 100%;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
-			}
-			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
-			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
-			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
-			}
-			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
-		</style>
-	</head>
+<html>
+  <head>
+    <BaseHead title={title} description={description} />
+    <style>
+      main {
+        width: calc(100% - 2em);
+        max-width: 100%;
+        margin: 0;
+      }
+      .hero-image {
+        width: 100%;
+      }
+      .hero-image img {
+        display: block;
+        margin: 0 auto;
+        border-radius: 12px;
+        box-shadow: var(--box-shadow);
+      }
+      .prose {
+        max-width: calc(100% - 2em);
+        margin: auto;
+        padding: 1em;
+        color: rgb(var(--gray-dark));
+      }
+      .title {
+        margin-bottom: 1em;
+        padding: 1em 0;
+        text-align: center;
+        line-height: 1;
+      }
+      .title h1 {
+        margin: 0 0 0.5em 0;
+      }
+      .date {
+        margin-bottom: 0.5em;
+        color: rgb(var(--gray));
+      }
+      .last-updated-on {
+        font-style: italic;
+      }
+    </style>
+  </head>
 
-	<body>
-		<Header />
-		<main>
-			<article>
-				<div class="hero-image">
-					{heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
-				</div>
-				<div class="prose">
-					<div class="title">
-						<div class="date">
-							<FormattedDate date={pubDate} />
-							{
-								updatedDate && (
-									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
-									</div>
-								)
-							}
-						</div>
-						<h1>{title}</h1>
-						<hr />
-					</div>
-					<slot />
-				</div>
-			</article>
-		</main>
-		<Footer />
-	</body>
+  <body style="opacity: 0;">
+    <ContainerLayouts>
+      {
+        pageTitle && pageTitleJa && (
+          <section class="headline">
+            <div class="headline__inner">
+              <h2 class="headline__name">{pageTitle}</h2>
+              <p class="headline__ja">
+                <span>{pageTitleJa}</span>
+              </p>
+            </div>
+          </section>
+        )
+      }
+      <section class="detail">
+        <div class="detail__inner">
+          <div class="detail__head">
+            <p class="head--title">
+              <span>{title}</span>
+            </p>
+            <p class="head--date"><FormattedDate date={pubDate} /></p>
+            <p class="head--category"><span>{category}</span></p>
+          </div>
+          <div class="detail__content">
+            <div class="content--text">
+              <!-- <div class="hero-image">
+                {
+                  heroImage && (
+                    <img width={1020} height={510} src={heroImage} alt="" />
+                  )
+                }
+              </div> -->
+              <div class="prose">
+                <!-- <div class="title">
+                  <div class="date">
+                    <FormattedDate date={pubDate} />
+                    {
+                      updatedDate && (
+                        <div class="last-updated-on">
+                          Last updated on <FormattedDate date={updatedDate} />
+                        </div>
+                      )
+                    }
+                  </div>
+                  <h1>{title}</h1>
+                  <hr />
+                </div> -->
+                <slot />
+              </div>
+            </div>
+          </div>
+          <div class="detail__foot">
+            <p class="foot--back"><a href="../" class="insite">BACK</a></p>
+          </div>
+        </div>
+      </section>
+      <main></main>
+    </ContainerLayouts>
+    <Footer />
+  </body>
 </html>

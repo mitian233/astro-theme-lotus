@@ -1,18 +1,14 @@
-# Astro Starter Kit: Blog
+# Astro Theme Lotus
 
-```sh
-npm create astro@latest -- --template blog
-```
+This is a simple, minimal, and fast blog theme inspired by a idol project official site. You can use it to create a personal blog or a simple website. It is built with [Astro](https://astro.build) and uses Markdown(or MDX) for content.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/blog)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/blog/devcontainer.json)
+# 🖼️ Preview
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+![1](preview/1.png)
+![2](preview/2.png)
+![3](preview/3.png)
 
-![blog](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
-
-Features:
+## 🌟 Features
 
 - ✅ Minimal styling (make it your own!)
 - ✅ 100/100 Lighthouse performance
@@ -65,4 +61,6 @@ Check out [our documentation](https://docs.astro.build) or jump into our [Discor
 
 ## Credit
 
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+Some stock images are from [Unsplash](https://unsplash.com/). 
+
+The author assumes no responsibility for any copyright issues that may arise from the content of this website. Any resemblance to existing works is purely coincidental. 
