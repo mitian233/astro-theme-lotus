@@ -38,6 +38,7 @@ const posts = (await getCollection("blog")).sort(
                       <span class="list--date">
                         <FormattedDate date={post.data.pubDate} />
                       </span>
+                      <span class="list--category">{post.data.category}</span>
                       <span class="list--text">{post.data.title}</span>
                     </a>
                   </li>
