@@ -7,6 +7,7 @@ import FormattedDate from "../components/FormattedDate.astro";
 import ContainerLayouts from "./ContainerLayouts.astro";
 
 import "../styles/news.css";
+import PostShare from "../components/PostShare.astro";
 
 type PostProps = CollectionEntry<"blog">["data"];
 interface Props extends PostProps {
@@ -122,6 +123,10 @@ const {
           </div>
           <div class="detail__foot">
             <p class="foot--back"><a href="../" class="insite">BACK</a></p>
+            <div class="foot--share">
+              <p class="foot--share__title">SHARE</p>
+              <PostShare shareTitle={title} />
+            </div>
           </div>
         </div>
       </section>
