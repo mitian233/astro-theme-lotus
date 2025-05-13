@@ -2,7 +2,11 @@
 
 This is a simple, minimal, and fast blog theme inspired by an idol project official site. You can use it to create a personal blog or a simple website. It is built with [Astro](https://astro.build) and uses Markdown(or MDX) for content.
 
-# 🖼️ Preview
+## 🚀 Deploy yours
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/mitian233/astro-theme-lotus)
+
+## 🖼️ Preview
 
 ![1](preview/1.png)
 ![2](preview/2.png)
@@ -10,12 +14,17 @@ This is a simple, minimal, and fast blog theme inspired by an idol project offic
 
 ## 🌟 Features
 
+- ✅ Fancybox for images
 - ✅ Minimal styling (make it your own!)
 - ✅ 100/100 Lighthouse performance
 - ✅ SEO-friendly with canonical URLs and OpenGraph data
 - ✅ Sitemap support
 - ✅ RSS Feed support
 - ✅ Markdown & MDX support
+- ⬜ Theme color switcher
+- ⬜ Dark mode support
+- ⬜ Static files optimization
+- ⬜ Comment support
 
 ## 🚀 Project Structure
 
