@@ -103,7 +103,7 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
   document.addEventListener("click", (event) => {
     const link = (event.target as HTMLElement)?.closest("a");
     if (!link) return;
-
+    if (link.getAttribute("data-fancybox")) return;
     const href = link.getAttribute("href");
 
     if (

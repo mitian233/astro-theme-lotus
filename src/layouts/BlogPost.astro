@@ -6,6 +6,8 @@ import FormattedDate from "../components/FormattedDate.astro";
 import ContainerLayouts from "./ContainerLayouts.astro";
 
 import "../styles/news.css";
+import "../styles/img-links.css";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
 import PostShare from "../components/PostShare.astro";
 
 type PostProps = CollectionEntry<"blog">["data"];
@@ -14,16 +16,8 @@ interface Props extends PostProps {
   pageTitleJa?: string;
 }
 
-const {
-  title,
-  description,
-  pubDate,
-  updatedDate,
-  heroImage,
-  category,
-  pageTitle,
-  pageTitleJa,
-} = Astro.props;
+const { title, description, pubDate, category, pageTitle, pageTitleJa } =
+  Astro.props;
 ---
 
 <html>
@@ -47,6 +41,7 @@ const {
       .prose {
         color: rgb(var(--gray-dark));
         pre {
+          padding: 1em;
           margin: 0 0 1em 0;
         }
         h1,
@@ -317,5 +312,10 @@ const {
       <main></main>
     </ContainerLayouts>
     <Footer />
-  </body>
+  </body><script>
+    import { Fancybox } from "@fancyapps/ui";
+    Fancybox.bind('[data-fancybox="gallery"]', {
+      // Your custom options for a specific gallery
+    });
+  </script>
 </html>

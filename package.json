@@ -9,14 +9,18 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.4",
     "@astrojs/mdx": "^4.2.6",
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.4.0",
     "@astrojs/vercel": "^8.1.4",
+    "@fancyapps/ui": "^5.0.36",
     "@tailwindcss/vite": "^4.1.6",
     "astro": "^5.7.12",
     "gsap": "^3.13.0",
     "jquery": "^3.7.1",
-    "tailwindcss": "^4.1.6"
+    "tailwindcss": "^4.1.6",
+    "typescript": "^5.8.3",
+    "unist-util-visit": "^5.0.0"
   }
 }
