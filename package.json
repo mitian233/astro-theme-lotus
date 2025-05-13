@@ -12,6 +12,7 @@
     "@astrojs/mdx": "^4.2.6",
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.4.0",
+    "@astrojs/vercel": "^8.1.4",
     "@tailwindcss/vite": "^4.1.6",
     "astro": "^5.7.12",
     "gsap": "^3.13.0",
