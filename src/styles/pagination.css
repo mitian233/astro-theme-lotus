@@ -1,0 +1,31 @@
+/* Pagination styles */
+.pagination {
+  margin: 30px 0;
+  text-align: center;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-family: "zen-kaku-gothic-antique", sans-serif;
+}
+
+.pagination-link {
+  color: #383834;
+  text-decoration: none;
+  padding: 8px 16px;
+  border: 1px solid #383834;
+  transition: all 0.3s ease;
+}
+
+.pagination-link:hover {
+  background-color: #383834;
+  color: #ffffff;
+}
+
+.pagination-info {
+  font-weight: bold;
+  color: #383834;
+}

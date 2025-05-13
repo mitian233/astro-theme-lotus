@@ -1,0 +1,138 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
+import ContainerLayouts from "../../layouts/ContainerLayouts.astro";
+import "../../styles/news.css";
+import { getAllCategroies, sortItemsByDateDesc } from "../../utils/data_utils";
+import type { GetStaticPathsOptions, Page } from "astro";
+import type { CollectionEntry } from "astro:content";
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const posts = (await getCollection("blog")).sort(sortItemsByDateDesc);
+  return paginate(posts, { pageSize: 10 });
+}
+
+interface Props {
+  page: Page<CollectionEntry<"blog">>;
+}
+
+const { page } = Astro.props;
+const allPosts = await getCollection("blog");
+const allCategories = getAllCategroies(allPosts);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body style="opacity: 0;">
+    <ContainerLayouts>
+      <section id="appnews-page" class="headline">
+        <div class="headline__inner">
+          <h2 class="headline__name">BLOG</h2>
+          <p class="headline__ja">
+            <span>ブログ</span>
+          </p>
+        </div>
+      </section>
+      <section class="list">
+        <section class="list__inner">
+          <div class="list__categories">
+            <ul>
+              <li class="is--current">
+                <a href="/blog" class="insite">全て</a>
+              </li>
+              {
+                allCategories.map((category) => (
+                  <li>
+                    <a href={`/blog/category/${category.slug}`} class="insite">
+                      {category.name}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+          <div class="list__content" style="border-top: #383834 solid 1px;">
+            <ul>
+              {
+                page.data.map((post) => (
+                  <li>
+                    <a href={`/blog/${post.id}/`} class="insite">
+                      <span class="list--date">
+                        <FormattedDate date={post.data.pubDate} />
+                      </span>
+                      <span class="list--category">{post.data.category}</span>
+                      <span class="list--text">{post.data.title}</span>
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
+          {/* Pagination */}
+          {
+            page.lastPage > 1 && (
+              <div class="list__paging">
+                <p class="paging--prev">
+                  <a
+                    href={page.url.prev || "#"}
+                    class={`${page.url.prev ? "insite" : "is--limit"}`}
+                  />
+                </p>
+                <p class="paging--next">
+                  <a
+                    href={page.url.next || "#"}
+                    class={`${page.url.next ? "insite" : "is--limit"}`}
+                  />
+                </p>
+              </div>
+            )
+          }
+        </section>
+        <div class="h-[81px]"></div>
+      </section>
+    </ContainerLayouts>
+    <Footer />
+
+    <style>
+      .pagination {
+        margin-top: 3rem;
+        display: flex;
+        justify-content: center;
+      }
+
+      .pagination-container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .pagination-link {
+        padding: 0.5rem 1rem;
+        border: #383834 solid 1px;
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .pagination-link:hover {
+        background-color: #383834;
+        color: #fff;
+      }
+
+      .pagination-info {
+        padding: 0.5rem;
+        font-family: "Oranienbaum", serif;
+      }
+    </style>
+  </body>
+</html>

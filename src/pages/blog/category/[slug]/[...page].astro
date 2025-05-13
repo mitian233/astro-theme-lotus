@@ -1,0 +1,184 @@
+---
+import BaseHead from "../../../../components/BaseHead.astro";
+import Footer from "../../../../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../../../consts";
+import { getCollection } from "astro:content";
+import FormattedDate from "../../../../components/FormattedDate.astro";
+import ContainerLayouts from "../../../../layouts/ContainerLayouts.astro";
+import "../../../../styles/news.css";
+import {
+  getAllCategroies,
+  getPostsByCategory,
+} from "../../../../utils/data_utils";
+import { slugify } from "../../../../utils/common_utils";
+import type { GetStaticPathsOptions } from "astro";
+import type { CollectionEntry } from "astro:content";
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const posts = await getCollection("blog");
+  const categories = getAllCategroies(posts);
+
+  return categories.flatMap((category) => {
+    const filteredPosts = posts
+      .filter((post) => slugify(post.data.category) === category.slug)
+      .sort(
+        (a, b) =>
+          new Date(b.data.pubDate).getTime() -
+          new Date(a.data.pubDate).getTime()
+      );
+
+    return paginate(filteredPosts, {
+      params: { slug: category.slug },
+      pageSize: 10,
+    });
+  });
+}
+
+interface Props {
+  page: {
+    data: CollectionEntry<"blog">[];
+    start: number;
+    end: number;
+    size: number;
+    total: number;
+    currentPage: number;
+    lastPage: number;
+    url: {
+      current: string;
+      next?: string;
+      prev?: string;
+    };
+  };
+}
+
+const { page } = Astro.props;
+const params = Astro.params;
+const allPosts = await getCollection("blog");
+const allCategroies = getAllCategroies(allPosts);
+const currentCategory = allCategroies.find((category) => {
+  return category.slug === params.slug;
+});
+const categoryName = currentCategory ? currentCategory.name : "未分類";
+const pageTitle = `${SITE_TITLE} - Blog - ${categoryName}`;
+const categories = allCategroies;
+const slug = params.slug;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={pageTitle} description={SITE_DESCRIPTION} />
+  </head>
+  <body style="opacity: 0;">
+    <ContainerLayouts>
+      <section id="appnews-page" class="headline">
+        <div class="headline__inner">
+          <h2 class="headline__name">BLOG - CATEGORY</h2>
+          <p class="headline__ja">
+            <span>ブログ - カテゴリー</span>
+          </p>
+        </div>
+      </section>
+
+      <section class="list">
+        <section class="list__inner">
+          <div class="list__categories">
+            <ul>
+              <li><a href="/blog" class="insite">全て</a></li>
+              {
+                categories.map((category) => (
+                  <li class={category.slug === slug ? "is--current" : ""}>
+                    <a href={`/blog/category/${category.slug}`} class="insite">
+                      {category.name}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+          <div class="list__content" style="border-top: #383834 solid 1px;">
+            {
+              page.data.length > 0 ? (
+                <ul>
+                  {page.data.map((post) => (
+                    <li>
+                      <a href={`/blog/${post.id}/`} class="insite">
+                        <span class="list--date">
+                          <FormattedDate date={post.data.pubDate} />
+                        </span>
+                        <span class="list--category">{post.data.category}</span>
+                        <span class="list--text">{post.data.title}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <div class="py-8 text-center">
+                  <p>このカテゴリーの記事はまだありません。</p>
+                </div>
+              )
+            }
+          </div>
+
+          {/* Pagination */}
+          {
+            page.lastPage > 1 && (
+              <div class="list__paging">
+                <p class="paging--prev">
+                  <a
+                    href={page.url.prev || "#"}
+                    class={`${page.url.prev ? "insite" : "is--limit"}`}
+                  />
+                </p>
+                <p class="paging--next">
+                  <a
+                    href={page.url.next || "#"}
+                    class={`${page.url.next ? "insite" : "is--limit"}`}
+                  />
+                </p>
+              </div>
+            )
+          }
+        </section>
+        <div class="h-[81px]"></div>
+      </section>
+    </ContainerLayouts>
+    <Footer />
+
+    <style>
+      .list__categories .active {
+        font-weight: bold;
+        text-decoration: underline;
+      }
+
+      .pagination {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: center;
+      }
+
+      .pagination-container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .pagination-link {
+        padding: 0.5rem 1rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        text-decoration: none;
+        color: inherit;
+        transition: background-color 0.3s;
+      }
+
+      .pagination-link:hover {
+        background-color: #f0f0f0;
+      }
+
+      .pagination-info {
+        padding: 0.5rem;
+      }
+    </style>
+  </body>
+</html>
