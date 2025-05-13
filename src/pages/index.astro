@@ -59,7 +59,7 @@ const posts = (await getCollection("blog")).sort(
                     }
                     return featuredPosts.map((post) => (
                       <li>
-                        <a href={`/blog/${post.id}/`} class="insite">
+                        <a href={`/post/${post.id}/`} class="insite">
                           <>
                             <span class="list--date">
                               <FormattedDate date={post.data.pubDate} />
@@ -79,7 +79,7 @@ const posts = (await getCollection("blog")).sort(
             <div class="news--head">
               <p class="news--head__title">LATEST POST</p>
               <p class="news--head__more">
-                <a href="/blog" class="insite">MORE</a>
+                <a href="/post" class="insite">MORE</a>
               </p>
             </div>
             <div class="news--content">
@@ -87,7 +87,7 @@ const posts = (await getCollection("blog")).sort(
                 {
                   posts.slice(0, 3).map((post) => (
                     <li>
-                      <a href={`/blog/${post.id}/`} class="insite">
+                      <a href={`/post/${post.id}/`} class="insite">
                         <>
                           <span class="list--date">
                             <FormattedDate date={post.data.pubDate} />

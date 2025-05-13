@@ -75,7 +75,7 @@ const { shareTitle } = Astro.props;
                 class={`${Astro.url.pathname.startsWith(link.path) ? "is--current" : ""}`}
               >
                 <a href={link.path} class="insite">
-                  <span class="nav--en">{link.name}</span>
+                  <span class="nav--en">{link.name.toUpperCase()}</span>
                   <span class="nav--ja">{link.nameJa}</span>
                 </a>
               </li>

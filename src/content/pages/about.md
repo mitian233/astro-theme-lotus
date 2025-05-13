@@ -1,17 +1,10 @@
 ---
-import Layout from "../layouts/BlogPost.astro";
+title: About
+titleJa: について
+description: This is a sample description for the about page.
 ---
 
-<Layout
-  title="About Me"
-  description="Lorem ipsum dolor sit amet"
-  pubDate={new Date("August 08 2021")}
-  heroImage="/blog-placeholder-about.jpg"
-  category="SPECIAL"
-  pageTitle="ABOUT ME"
-  pageTitleJa="について"
->
-  <p>
+<p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
     tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo
     integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis
@@ -72,4 +65,3 @@ import Layout from "../layouts/BlogPost.astro";
     pulvinar proin gravida. Egestas integer eget aliquet nibh praesent tristique
     magna.
   </p>
-</Layout>

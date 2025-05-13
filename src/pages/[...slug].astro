@@ -68,7 +68,7 @@ const { Content } = await render(page);
     <ContainerLayouts>
       <section class="headline">
         <div class="headline__inner">
-          <h2 class="headline__name">{page.data.title}</h2>
+          <h2 class="headline__name">{page.data.title.toUpperCase()}</h2>
           <p class="headline__ja">
             <span>{page.data.titleJa}</span>
           </p>
