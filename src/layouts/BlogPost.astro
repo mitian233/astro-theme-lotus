@@ -46,10 +46,216 @@ const {
         box-shadow: var(--box-shadow);
       }
       .prose {
-        max-width: calc(100% - 2em);
-        margin: auto;
-        padding: 1em;
         color: rgb(var(--gray-dark));
+        pre {
+          margin: 0 0 1em 0;
+        }
+        h1,
+        h2,
+        h3 {
+          font-family: "noto-sans-cjk-jp", sans-serif;
+          font-weight: 700;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-feature-settings: "palt" 1;
+          font-feature-settings: "palt" 1;
+          font-size: 20px;
+          letter-spacing: 0.05em;
+          line-height: 1.7em;
+          position: relative;
+          margin-bottom: 25px;
+        }
+        h1::before,
+        h2::before,
+        h3::before {
+          content: "";
+          display: block;
+          width: 30px;
+          height: 1px;
+          background-color: #383834;
+          position: absolute;
+          left: -40px;
+          top: 17px;
+        }
+        h4,
+        h5,
+        h6 {
+          font-family: "zen-kaku-gothic-antique", sans-serif;
+          font-weight: 700;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-feature-settings: "palt" 1;
+          font-feature-settings: "palt" 1;
+          font-size: 20px;
+          line-height: 1.5em;
+          margin-bottom: 25px;
+          position: relative;
+        }
+        h4::before,
+        h5::before,
+        h6::before {
+          content: "";
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          border: #383834 solid 1px;
+          box-sizing: border-box;
+          transform: translateY(2px);
+          margin-right: 15px;
+        }
+        p {
+          margin: 0 0 1em 0;
+        }
+        ul {
+          margin: 0 0 1em 0;
+          li {
+            margin: 0 0 0.5em 0;
+          }
+          li::before {
+            content: "・";
+            color: rgb(var(--gray));
+          }
+        }
+      }
+      @media screen and (max-width: 1199px) {
+        .prose {
+          h1,
+          h2,
+          h3 {
+            font-family: "noto-sans-cjk-jp", sans-serif;
+            font-weight: 700;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font-feature-settings: "palt" 1;
+            font-feature-settings: "palt" 1;
+            font-size: 15px;
+            font-size: calc(4vw * 10 / 16);
+            letter-spacing: 0.05em;
+            line-height: 1.7em;
+            position: relative;
+            margin-bottom: 25px;
+            margin-bottom: 6.6666666667vw;
+          }
+          h1::before,
+          h2::before,
+          h3::before {
+            content: "";
+            display: block;
+            width: 15px;
+            width: 4vw;
+            height: 1px;
+            height: 0.2666666667vw;
+            background-color: #383834;
+            position: absolute;
+            left: -20px;
+            left: -5.3333333333vw;
+            top: 10px;
+            top: 2.6666666667vw;
+          }
+          h4,
+          h5,
+          h6 {
+            font-family: "zen-kaku-gothic-antique", sans-serif;
+            font-weight: 700;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font-feature-settings: "palt" 1;
+            font-feature-settings: "palt" 1;
+            font-size: 15px;
+            font-size: calc(4vw * 10 / 16);
+            line-height: 1.5em;
+            margin-bottom: 20px;
+            margin-bottom: 5.3333333333vw;
+            position: relative;
+          }
+          h4::before,
+          h5::before,
+          h6::before {
+            content: "";
+            display: inline-block;
+            width: 15px;
+            width: 4vw;
+            height: 15px;
+            height: 4vw;
+            border: #383834 solid 1px;
+            border: #383834 solid 0.2666666667vw;
+            box-sizing: border-box;
+            transform: translateY(2px);
+            transform: translateY(0.5333333333vw);
+            margin-right: 8px;
+            margin-right: 2.1333333333vw;
+          }
+        }
+      }
+      @media screen and (max-width: 767px) {
+        .prose {
+          h1,
+          h2,
+          h3 {
+            font-family: "noto-sans-cjk-jp", sans-serif;
+            font-weight: 700;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font-feature-settings: "palt" 1;
+            font-feature-settings: "palt" 1;
+            font-size: 15px;
+            font-size: 4vw;
+            letter-spacing: 0.05em;
+            line-height: 1.7em;
+            position: relative;
+            margin-bottom: 25px;
+            margin-bottom: 6.6666666667vw;
+          }
+          h1::before,
+          h2::before,
+          h3::before {
+            content: "";
+            display: block;
+            width: 15px;
+            width: 4vw;
+            height: 1px;
+            height: 0.2666666667vw;
+            background-color: #383834;
+            position: absolute;
+            left: -20px;
+            left: -5.3333333333vw;
+            top: 10px;
+            top: 2.6666666667vw;
+          }
+          h4,
+          h5,
+          h6 {
+            font-family: "zen-kaku-gothic-antique", sans-serif;
+            font-weight: 700;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font-feature-settings: "palt" 1;
+            font-feature-settings: "palt" 1;
+            font-size: 15px;
+            font-size: 4vw;
+            line-height: 1.5em;
+            margin-bottom: 20px;
+            margin-bottom: 5.3333333333vw;
+            position: relative;
+          }
+          h4::before,
+          h5::before,
+          h6::before {
+            content: "";
+            display: inline-block;
+            width: 15px;
+            width: 4vw;
+            height: 15px;
+            height: 4vw;
+            border: #383834 solid 1px;
+            border: #383834 solid 0.2666666667vw;
+            box-sizing: border-box;
+            transform: translateY(2px);
+            transform: translateY(0.5333333333vw);
+            margin-right: 8px;
+            margin-right: 2.1333333333vw;
+          }
+        }
       }
       .title {
         margin-bottom: 1em;
@@ -96,31 +302,8 @@ const {
             <p class="head--category"><span>{category}</span></p>
           </div>
           <div class="detail__content">
-            <div class="content--text">
-              <!-- <div class="hero-image">
-                {
-                  heroImage && (
-                    <img width={1020} height={510} src={heroImage} alt="" />
-                  )
-                }
-              </div> -->
-              <div class="prose">
-                <!-- <div class="title">
-                  <div class="date">
-                    <FormattedDate date={pubDate} />
-                    {
-                      updatedDate && (
-                        <div class="last-updated-on">
-                          Last updated on <FormattedDate date={updatedDate} />
-                        </div>
-                      )
-                    }
-                  </div>
-                  <h1>{title}</h1>
-                  <hr />
-                </div> -->
-                <slot />
-              </div>
+            <div class="content--text prose">
+              <slot />
             </div>
           </div>
           <div class="detail__foot">
