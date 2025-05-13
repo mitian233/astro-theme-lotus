@@ -79,9 +79,15 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
 <script>
   import gsap from "gsap";
 
-  document.addEventListener("DOMContentLoaded", () => {
-    // document.body.style.opacity = "0";
+  document.addEventListener("DOMContentLoaded", fadeInPage);
+  window.addEventListener("pageshow", (event) => {
+    // Check if page is loaded from cache (back/forward navigation)
+    if (event.persisted) {
+      fadeInPage();
+    }
+  });
 
+  function fadeInPage() {
     gsap.fromTo(
       document.body,
       { opacity: 0 },
@@ -92,7 +98,7 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
         clearProps: "opacity",
       }
     );
-  });
+  }
 
   document.addEventListener("click", (event) => {
     const link = (event.target as HTMLElement)?.closest("a");
