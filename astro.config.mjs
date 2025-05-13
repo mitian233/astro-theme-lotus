@@ -9,7 +9,7 @@ import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://example.com",
+  site: "https://astro-blog-lotus.vercel.app",
   markdown: {
     rehypePlugins: [rehypeWrapImages],
   },

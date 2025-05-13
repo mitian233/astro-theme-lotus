@@ -59,7 +59,7 @@ const currentCategory = allCategroies.find((category) => {
   return category.slug === params.slug;
 });
 const categoryName = currentCategory ? currentCategory.name : "未分類";
-const pageTitle = `${SITE_TITLE} - Blog - ${categoryName}`;
+const pageTitle = `Category of ${categoryName}`;
 const categories = allCategroies;
 const slug = params.slug;
 ---
@@ -73,9 +73,9 @@ const slug = params.slug;
     <ContainerLayouts>
       <section id="appnews-page" class="headline">
         <div class="headline__inner">
-          <h2 class="headline__name">BLOG - CATEGORY</h2>
+          <h2 class="headline__name">CATEGORY</h2>
           <p class="headline__ja">
-            <span>ブログ - カテゴリー</span>
+            <span>カテゴリー</span>
           </p>
         </div>
       </section>
@@ -84,11 +84,11 @@ const slug = params.slug;
         <section class="list__inner">
           <div class="list__categories">
             <ul>
-              <li><a href="/blog" class="insite">全て</a></li>
+              <li><a href="/post" class="insite">全て</a></li>
               {
                 categories.map((category) => (
                   <li class={category.slug === slug ? "is--current" : ""}>
-                    <a href={`/blog/category/${category.slug}`} class="insite">
+                    <a href={`/post/category/${category.slug}`} class="insite">
                       {category.name}
                     </a>
                   </li>
@@ -102,7 +102,7 @@ const slug = params.slug;
                 <ul>
                   {page.data.map((post) => (
                     <li>
-                      <a href={`/blog/${post.id}/`} class="insite">
+                      <a href={`/post/${post.id}/`} class="insite">
                         <span class="list--date">
                           <FormattedDate date={post.data.pubDate} />
                         </span>

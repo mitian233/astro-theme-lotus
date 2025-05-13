@@ -1,6 +1,5 @@
 ---
 export const prerender = false;
-import { SITE_URL } from "../consts";
 
 interface Props {
   shareTitle?: string;
@@ -12,7 +11,7 @@ const { shareTitle } = Astro.props;
   <ul>
     <li class="foot--share__list__twitter">
       <a
-        href={`https://twitter.com/intent/tweet?url=${SITE_URL}${Astro.url.pathname}&text=${shareTitle}`}
+        href={`https://twitter.com/intent/tweet?url=${new URL(Astro.url.pathname, Astro.site)}&text=${shareTitle}`}
         onclick="window.open(this.href,'tw_window', 'screenX='+(screen.width - 600) / 2+',screenY='+(screen.height - 500) / 2+',width=600, height=300, menubar=no, toolbar=no, scrollbars=yes');return false;"
         ><img
           src="/shared/img/common/share_x.png"
@@ -24,7 +23,7 @@ const { shareTitle } = Astro.props;
     </li>
     <li class="foot--share__list__facebook">
       <a
-        href={`https://www.facebook.com/share.php?u=${SITE_URL}${Astro.url.pathname}`}
+        href={`https://www.facebook.com/share.php?u=${new URL(Astro.url.pathname, Astro.site)}`}
         onclick="window.open(this.href,'tw_window', 'screenX='+(screen.width - 800) / 2+',screenY='+(screen.height - 400) / 2+',width=800, height=400, menubar=no, toolbar=no, scrollbars=yes');return false;"
         ><img
           src="/shared/img/common/share_facebook.svg"
@@ -36,7 +35,7 @@ const { shareTitle } = Astro.props;
     </li>
     <li class="foot--share__list__line">
       <a
-        href={`https://line.me/R/msg/text/?${shareTitle}%20${SITE_URL}${Astro.url.pathname}`}
+        href={`https://line.me/R/msg/text/?${shareTitle}%20${new URL(Astro.url.pathname, Astro.site)}`}
         onclick="window.open(this.href,'tw_window', 'screenX='+(screen.width - 800) / 2+',screenY='+(screen.height - 600) / 2+',width=800, height=600, menubar=no, toolbar=no, scrollbars=yes');return false;"
         ><img
           src="/shared/img/common/share_line.svg"

@@ -33,7 +33,7 @@ const allPosts = await getCollection("blog");
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <BaseHead title="Featured" description="Featured posts" />
   </head>
   <body style="opacity: 0;">
     <ContainerLayouts>
@@ -52,7 +52,7 @@ const allPosts = await getCollection("blog");
               {
                 page.data.map((post) => (
                   <li>
-                    <a href={`/blog/${post.id}/`} class="insite">
+                    <a href={`/post/${post.id}/`} class="insite">
                       <span class="list--date">
                         <FormattedDate date={post.data.pubDate} />
                       </span>

@@ -27,15 +27,15 @@ const allCategories = getAllCategroies(allPosts);
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <BaseHead title="Posts" description={SITE_DESCRIPTION} />
   </head>
   <body style="opacity: 0;">
     <ContainerLayouts>
       <section id="appnews-page" class="headline">
         <div class="headline__inner">
-          <h2 class="headline__name">BLOG</h2>
+          <h2 class="headline__name">POSTS</h2>
           <p class="headline__ja">
-            <span>ブログ</span>
+            <span>記事</span>
           </p>
         </div>
       </section>
@@ -44,12 +44,12 @@ const allCategories = getAllCategroies(allPosts);
           <div class="list__categories">
             <ul>
               <li class="is--current">
-                <a href="/blog" class="insite">全て</a>
+                <a href="/post" class="insite">全て</a>
               </li>
               {
                 allCategories.map((category) => (
                   <li>
-                    <a href={`/blog/category/${category.slug}`} class="insite">
+                    <a href={`/post/category/${category.slug}`} class="insite">
                       {category.name}
                     </a>
                   </li>
@@ -62,7 +62,7 @@ const allCategories = getAllCategroies(allPosts);
               {
                 page.data.map((post) => (
                   <li>
-                    <a href={`/blog/${post.id}/`} class="insite">
+                    <a href={`/post/${post.id}/`} class="insite">
                       <span class="list--date">
                         <FormattedDate date={post.data.pubDate} />
                       </span>
