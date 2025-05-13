@@ -573,6 +573,10 @@
     padding: 40px;
 }
 
+.content--page {
+    border-top: #383834 solid 1px !important;
+}
+
 .detail__content::before,
 .detail__content::after {
     content: "";
@@ -584,6 +588,10 @@
     box-sizing: border-box;
     position: absolute;
     left: 0;
+}
+
+.content--page::before {
+    content: none !important;
 }
 
 .detail__content::before {

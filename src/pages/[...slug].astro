@@ -1,0 +1,102 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import ContainerLayouts from "../layouts/ContainerLayouts.astro";
+
+import "../styles/news.css";
+import "../styles/img-links.css";
+import "../styles/prose.css";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
+import PostShare from "../components/PostShare.astro";
+import type { Page } from "astro";
+
+export async function getStaticPaths() {
+  const pages = await getCollection("pages");
+  return pages.map((page) => {
+    return {
+      params: { slug: page.id },
+      props: { page },
+    };
+  });
+}
+
+type Props = { page: CollectionEntry<"pages"> };
+
+const { page } = Astro.props;
+const { Content } = await render(page);
+---
+
+<html>
+  <head>
+    <BaseHead title={page.data.title} description={page.data.description} />
+    <style>
+      main {
+        width: calc(100% - 2em);
+        max-width: 100%;
+        margin: 0;
+      }
+      .hero-image {
+        width: 100%;
+      }
+      .hero-image img {
+        display: block;
+        margin: 0 auto;
+        border-radius: 12px;
+        box-shadow: var(--box-shadow);
+      }
+      .title {
+        margin-bottom: 1em;
+        padding: 1em 0;
+        text-align: center;
+        line-height: 1;
+      }
+      .title h1 {
+        margin: 0 0 0.5em 0;
+      }
+      .date {
+        margin-bottom: 0.5em;
+        color: rgb(var(--gray));
+      }
+      .last-updated-on {
+        font-style: italic;
+      }
+    </style>
+  </head>
+
+  <body style="opacity: 0;">
+    <ContainerLayouts>
+      <section class="headline">
+        <div class="headline__inner">
+          <h2 class="headline__name">{page.data.title}</h2>
+          <p class="headline__ja">
+            <span>{page.data.titleJa}</span>
+          </p>
+        </div>
+      </section>
+      <section class="detail">
+        <div class="detail__inner">
+          <div class="detail__content content--page">
+            <div class="content--text prose">
+              <Content />
+            </div>
+          </div>
+          <div class="detail__foot">
+            <p class="foot--back"><a href="../" class="insite">BACK</a></p>
+            <div class="foot--share">
+              <p class="foot--share__title">SHARE</p>
+              <PostShare shareTitle={page.data.title} />
+            </div>
+          </div>
+        </div>
+      </section>
+      <main></main>
+    </ContainerLayouts>
+    <Footer />
+  </body><script>
+    import { Fancybox } from "@fancyapps/ui";
+    Fancybox.bind('[data-fancybox="gallery"]', {
+      // Your custom options for a specific gallery
+    });
+  </script>
+</html>
