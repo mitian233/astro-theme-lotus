@@ -1,6 +1,6 @@
 # Astro Theme Lotus
 
-This is a simple, minimal, and fast blog theme inspired by a idol project official site. You can use it to create a personal blog or a simple website. It is built with [Astro](https://astro.build) and uses Markdown(or MDX) for content.
+This is a simple, minimal, and fast blog theme inspired by an idol project official site. You can use it to create a personal blog or a simple website. It is built with [Astro](https://astro.build) and uses Markdown(or MDX) for content.
 
 # 🖼️ Preview
 
