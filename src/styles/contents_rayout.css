@@ -265,6 +265,15 @@ svg {
   justify-content: space-between;
 }
 
+.header__title a {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
+  font-family: 'Oranienbaum', 'Zen Old Mincho', serif;
+  font-weight: 400;
+}
+
 .header__logo {
   line-height: 1em;
   width: 26.09375vw;
@@ -1092,6 +1101,9 @@ svg {
     justify-content: space-between;
     align-items: center;
   }
+    .header__title a {
+      font-size: 1.5rem;
+    }
   .header__logo {
     line-height: 1em;
     width: 58.6666666667vw;
@@ -1941,6 +1953,9 @@ svg {
     justify-content: space-between;
     align-items: center;
   }
+    .header__title a {
+      font-size: 1.5rem;
+    }
   .header__logo {
     line-height: 1em;
     width: 58.6666666667vw;

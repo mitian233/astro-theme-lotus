@@ -1,5 +1,5 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { SITE_TITLE, SITE_DESCRIPTION, siteConfig } from "../consts";
 import FooterShare from "../components/FooterShare.astro";
 
 const menuLinks = [
@@ -19,12 +19,21 @@ const { shareTitle } = Astro.props;
   <div class="container grow">
     <header class="header">
       <div class="header__inner">
-        <h1 class="">
-          <a href="../" class="insite">
-            <p>{SITE_TITLE}</p>
-            <p>{SITE_DESCRIPTION}</p>
-          </a>
-        </h1>
+        {
+          siteConfig.logoSrc ? (
+            <h1 class="header__logo">
+              <a href="../" class="insite">
+                <img src={siteConfig.logoSrc} height="81" alt="site logo" />
+              </a>
+            </h1>
+          ) : (
+            <h1 class="header__title">
+              <a href="/">
+                <p>{SITE_TITLE}</p>
+              </a>
+            </h1>
+          )
+        }
         <p class="header__date"></p>
         <p class="header__ham">
           <a href="#"><span></span><span></span><span></span></a>

@@ -1,7 +1,7 @@
 ---
 import BaseHead from "../../components/BaseHead.astro";
 import Footer from "../../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { SITE_TITLE, SITE_DESCRIPTION, siteConfig } from "../../consts";
 import { getCollection } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
 import ContainerLayouts from "../../layouts/ContainerLayouts.astro";
@@ -12,7 +12,7 @@ import type { CollectionEntry } from "astro:content";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const posts = (await getCollection("blog")).sort(sortItemsByDateDesc);
-  return paginate(posts, { pageSize: 10 });
+  return paginate(posts, { pageSize: siteConfig.paginationSize });
 }
 
 interface Props {
@@ -77,7 +77,7 @@ const allCategories = getAllCategroies(allPosts);
 
           {/* Pagination */}
           {
-            page.lastPage > 1 && (
+            page.lastPage > 1 ? (
               <div class="list__paging">
                 <p class="paging--prev">
                   <a
@@ -92,10 +92,11 @@ const allCategories = getAllCategroies(allPosts);
                   />
                 </p>
               </div>
+            ) : (
+              <div class="h-[81px]" />
             )
           }
         </section>
-        <div class="h-[81px]"></div>
       </section>
     </ContainerLayouts>
     <Footer />

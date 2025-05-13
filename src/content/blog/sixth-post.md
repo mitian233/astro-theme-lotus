@@ -3,7 +3,7 @@ title: 'The Art of Mindful Productivity'
 description: 'Finding balance between efficiency and wellbeing in our increasingly demanding work environments'
 pubDate: 'May 05 2025'
 heroImage: '/blog-placeholder-2.jpg'
-category: 'Personal Development'
+category: 'Development'
 ---
 
 In our hyperconnected world, productivity has become something of an obsession. We're constantly seeking ways to do more in less time, often at the expense of our wellbeing. Mindful productivity offers an alternative approach—one that values quality over quantity, presence over multitasking, and sustainability over burnout.

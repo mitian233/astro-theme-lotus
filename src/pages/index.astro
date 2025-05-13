@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { SITE_TITLE, SITE_DESCRIPTION, siteConfig } from "../consts";
 import "../styles/news.css";
 import "../styles/top.css";
 import ContainerLayouts from "../layouts/ContainerLayouts.astro";
@@ -20,21 +20,14 @@ const posts = (await getCollection("blog")).sort(
   </head>
   <body style="opacity: 0;">
     <ContainerLayouts>
-      <!-- <section class="headline">
-        <div class="headline__inner">
-          <h2 class="headline__name">Hello, Astronaut!</h2>
-          <p class="headline__ja"><span>ようこそ</span></p>
-        </div>
-      </section> -->
       <section class="main">
         <div class="main__inner">
           <p class="main__visual">
             <picture>
-              <source type="image/webp" srcset="/shared/img/kv.jpg" /><img
-                src="/shared/img/kv.jpg"
-                width="100%"
-                alt=""
-              />
+              <source
+                type="image/webp"
+                srcset={siteConfig.homePageImageSrc}
+              /><img src={siteConfig.homePageImageSrc} width="100%" alt="" />
             </picture>
           </p>
           <div class="main__banner"></div>
