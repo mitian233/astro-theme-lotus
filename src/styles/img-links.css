@@ -24,7 +24,7 @@
 
 /* 添加一个微妙的钓光效果 */
 .img-link::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;

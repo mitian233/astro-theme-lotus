@@ -1,12 +1,7 @@
 ---
 import { SITE_TITLE, SITE_DESCRIPTION, siteConfig } from "../consts";
 import FooterShare from "../components/FooterShare.astro";
-
-const menuLinks = [
-  { name: "POSTS", nameJa: "記事", path: "/post" },
-  { name: "FEATURED", nameJa: "特集", path: "/featured" },
-  { name: "ABOUT", nameJa: "について", path: "/about" },
-];
+import { menuLinks } from "../consts";
 
 interface Props {
   shareTitle?: string;
@@ -16,7 +11,7 @@ const { shareTitle } = Astro.props;
 
 <div id="pagetop"></div>
 <div class="contentWrapper">
-  <div class="container grow">
+  <div class="container">
     <header class="header">
       <div class="header__inner">
         {
@@ -65,7 +60,7 @@ const { shareTitle } = Astro.props;
       <a href="#pagetop"><span><strong>▲</strong><br />TOP</span></a>
     </div>
   </div>
-  <aside id="side" class="side size--vh grow">
+  <aside id="side" class="side size--vh">
     <div class="side__inner">
       <nav class="side__nav">
         <ul>

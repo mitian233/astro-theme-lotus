@@ -1,0 +1,33 @@
+---
+interface Props {
+  images: {
+    src: string;
+    alt: string;
+  }[];
+}
+
+const { images } = Astro.props;
+---
+
+<div class="photos-wall">
+  {
+    images.map((item) => (
+      <div class="photos-wall__inner">
+        <a
+          class="photos-wall__item"
+          data-fancybox="gallery"
+          href={item.src}
+          data-caption={item.alt}
+        >
+          <img
+            class="photos-wall__images"
+            src={item.src}
+            alt={item.alt}
+            loading="lazy"
+          />
+        </a>
+        <p style="margin: 0;">{item.alt}</p>
+      </div>
+    ))
+  }
+</div>

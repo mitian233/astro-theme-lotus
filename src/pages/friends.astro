@@ -1,0 +1,65 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import ContainerLayouts from "../layouts/ContainerLayouts.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/member.css";
+import { friendsLinks } from "../consts";
+---
+
+<!doctype html>
+<html>
+  <head>
+    <BaseHead title="Friends" description="Links to my friends" />
+    <style>
+      .detail__localnav::after {
+        content: none;
+      }
+    </style>
+  </head>
+  <body style="opacity: 0;">
+    <ContainerLayouts>
+      <section class="headline">
+        <div class="headline__inner">
+          <h2 class="headline__name">FRIENDS</h2>
+          <p class="headline__ja">
+            <span>友人</span>
+          </p>
+        </div>
+      </section>
+      <section class="detail">
+        <div class="detail__inner">
+          <div class="detail__localnav">
+            <ul>
+              {
+                friendsLinks.map((detail) => (
+                  <li class="localnav--default">
+                    <a href={detail.siteURL} class="insite">
+                      <span class="localnav--name">
+                        <span>{detail.site}</span>
+                      </span>
+                      <span class="localnav--thumb">
+                        <picture>
+                          <source
+                            srcset={detail.icon}
+                            media="(max-width: 1199px)"
+                          />
+                          <img
+                            src={detail.icon}
+                            style="aspect-ratio: 1;"
+                            width="100%"
+                            alt=""
+                          />
+                        </picture>
+                      </span>
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </section>
+    </ContainerLayouts>
+    <Footer />
+  </body>
+</html>
