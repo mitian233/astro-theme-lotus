@@ -22,10 +22,10 @@ This is a simple, minimal, and fast blog theme inspired by an idol project offic
 - ✅ Sitemap support
 - ✅ RSS Feed support
 - ✅ Markdown & MDX support
+- ✅ Comment support
 - ⬜ Theme color switcher
 - ⬜ Dark mode support
 - ⬜ Static files optimization
-- ⬜ Comment support
 
 ## 🚀 Project Structure
 
