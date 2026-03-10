@@ -9,26 +9,26 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.5",
-    "@astrojs/mdx": "^4.3.9",
-    "@astrojs/rss": "^4.0.13",
-    "@astrojs/sitemap": "^3.6.0",
-    "@astrojs/vercel": "^9.0.0",
-    "@astrojs/vue": "^5.1.2",
+    "@astrojs/check": "^0.9.7",
+    "@astrojs/mdx": "^5.0.0",
+    "@astrojs/rss": "^4.0.17",
+    "@astrojs/sitemap": "^3.7.1",
+    "@astrojs/vercel": "^10.0.0",
+    "@astrojs/vue": "^6.0.0",
     "@fancyapps/ui": "^5.0.36",
     "@giscus/vue": "^3.1.1",
-    "@tailwindcss/vite": "^4.1.6",
+    "@tailwindcss/vite": "^4.2.1",
     "@types/katex": "^0.16.7",
-    "astro": "^5.15.2",
+    "astro": "^6.0.2",
     "gsap": "^3.13.0",
     "jquery": "^3.7.1",
     "katex": "^0.16.22",
     "rehype-katex": "^7.0.1",
     "rehype-raw": "^7.0.0",
     "remark-math": "^6.0.0",
-    "tailwindcss": "^4.1.6",
+    "tailwindcss": "^4.2.1",
     "typescript": "^5.8.3",
     "unist-util-visit": "^5.0.0",
-    "vue": "^3.5.13"
+    "vue": "^3.5.30"
   }
 }
