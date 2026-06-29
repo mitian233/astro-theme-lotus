@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from "astro/config";
+import { unified } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
@@ -25,14 +26,13 @@ const rehypeWrapImages = rehypeWrapImagesFromFile;
 export default defineConfig({
   site: "https://astro-blog-lotus.vercel.app",
   markdown: {
-    remarkPlugins: [remarkMath],
-    rehypePlugins: [rehypeWrapImages, rehypeKatex, rehypeRaw], // Now using the correctly typed plugin
+    processor: unified({
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [rehypeWrapImages, rehypeKatex, rehypeRaw],
+    }),
   },
   integrations: [
-    mdx({
-      remarkPlugins: [remarkMath],
-      rehypePlugins: [rehypeWrapImages, rehypeKatex, rehypeRaw], // Now using the correctly typed plugin
-    }),
+    mdx(),
     sitemap(),
     vue(),
   ],
