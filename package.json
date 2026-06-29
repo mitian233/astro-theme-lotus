@@ -20,7 +20,7 @@
     "@giscus/vue": "^3.1.1",
     "@tailwindcss/vite": "^4.3.1",
     "@types/katex": "^0.16.7",
-    "astro": "^7.0.3",
+    "astro": "^7.0.3"
     "gsap": "^3.13.0",
     "jquery": "^3.7.1",
     "katex": "^0.16.22",
